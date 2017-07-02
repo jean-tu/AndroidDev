@@ -39,9 +39,18 @@ Supported Android Devices:
 * **Hardware** - how you would be able to fully test the applciation 
 * **Docs** - [developer.android.com/reference](developer.android.com/reference) is where you would be able to get some documentation
 
+## Short Cuts 
+* If you want to add a missing package `Alt + Enter` 
 
+## Development 
+* **Toast** - what you can use for pop-ups to alert the user of something 
 
+``` 
+Toast.makeText(getApplicationContext(), "Welcome to DiceOut", Toast.LENGTH_SHORT).show();
+```
 
+* Margins is the amount of space that is outside of the Widget walls 
+* Padding is the amount of space that is inside the widget 
 
 
 
