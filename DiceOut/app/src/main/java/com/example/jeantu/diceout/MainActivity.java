@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     Random rand; //random generator for the dice
 
+    //Fields to hold the die value that will be added to the arry list
+    int die1, die2, die3;
+
+    //ArrayList to hold the 3 die
+    ArrayList<Integer> dice; //must be initialized later on
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +61,31 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialize the random number generator
         rand = new Random();
+
+        //Create ArrayList container for the dice values
+        dice = new ArrayList<Integer>();
     }
 
     public void rollDice(View v){
 
         rollResult.setText("Clicked!");
 
-        int num = rand.nextInt(6)+1;//generates a random number w/ max limit up to & not including the limit
-        String randomValue = "Number generated: " + num;
-        Toast.makeText(getApplicationContext(), randomValue, Toast.LENGTH_SHORT).show();
+        // Roll dice
+        die1 = rand.nextInt(6)+1;
+        die2 = rand.nextInt(6)+1;
+        die3 = rand.nextInt(6)+1;
+
+        //Set the dice values into the array list (you have to clear the old ones if they have rolled once before)
+        dice.clear();
+        dice.add(die1);
+        dice.add(die2);
+        dice.add(die3);
+
+        //Build message with the result
+        String msg = "You rolled a " + die1 + " and " + die2 + " ,and " + die3;
+
+        //update the app to display result message
+        rollResult.setText(msg);
     }
 
     @Override
