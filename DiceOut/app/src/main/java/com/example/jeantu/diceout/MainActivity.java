@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     //Text to hold the roll result text
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     //Field to hold the score
     int score;
+
+    Random rand; //random generator for the dice
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +52,18 @@ public class MainActivity extends AppCompatActivity {
 
         //Create greeting
         Toast.makeText(getApplicationContext(), "Welcome to DiceOut", Toast.LENGTH_SHORT).show();
+
+        //Initialize the random number generator
+        rand = new Random();
     }
 
     public void rollDice(View v){
+
         rollResult.setText("Clicked!");
+
+        int num = rand.nextInt(6)+1;//generates a random number w/ max limit up to & not including the limit
+        String randomValue = "Number generated: " + num;
+        Toast.makeText(getApplicationContext(), randomValue, Toast.LENGTH_SHORT).show();
     }
 
     @Override
